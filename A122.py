@@ -1,7 +1,7 @@
 s = input()
 n = int(s)
 lis = list(set(s))
-if(lis==['4', '7'] or lis==['7','4']):
+if(lis==['4', '7'] or lis==['7','4'] or lis==['7'] or lis==['4']):
     print('YES')
 else:
     booler=False

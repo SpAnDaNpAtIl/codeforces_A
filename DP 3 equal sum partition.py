@@ -22,7 +22,7 @@ else:
         for j in range(summ+1):
             if i==0 or j==0:
                 None
-            elif(arr[i-1]<=summ):
+            elif(arr[i-1]<=j):
                 dp[i][j] = dp[i-1][j-arr[i-1]] or dp[i-1][j]
             else:
                 dp[i][j] = dp[i-1][j]

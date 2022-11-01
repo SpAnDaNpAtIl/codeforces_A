@@ -1,24 +1,28 @@
 arr = [2,3,7,8,10]
-#check if sum of any subset adds to the sum_value
-#if yes print True
-#if no print False
-sum=10
-n = len(arr)
+sum=11
+
+#find if there is a subset whose sum is 11
+
+dp = [[0 for i in range(sum+1)] for i in range(len(arr)+1)]
+
+dp[0] = [False for i in range(sum+1)]
+for i in range(len(dp)):
+    dp[i][0] = True
 
 
-dp = [[-1 for i in range(sum+1)] for j in range(n+1)]
-
-for i in range(n+1):
+for i in range(len(arr)+1):
     for j in range(sum+1):
-        if(i==0):
-            dp[i][j]=False
-        if(j==0):
-            dp[i][j]=True
+        if(i==0 or j==0):
+            None
+        elif(arr[i-1]<=sum):
+            dp[i][j] = dp[i-1][j-arr[i-1]] or dp[i-1][j]
+        else:
+            dp[i][j] = dp[i-1][j]
 
-        if(arr[i-1]<=j):
-            dp[i][j] = dp[i-1][j-1]
+for i in dp:
+    print(i)
 
-print(dp)
-
-
-
+if dp[-1][-1]==True:
+    print('subset possible')
+else:
+    print('subset not possible')
